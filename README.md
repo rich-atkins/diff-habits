@@ -35,6 +35,28 @@ diff-habits scan --repo . --author "you@example.com"
 diff-habits compare --repo . --author "you@example.com" --split 2026-04-13
 ```
 
+## What you'll see
+
+`compare` counts masking constructs in added lines on each side of the split. Run
+against a small seeded demo (hand-coded, then AI-assisted):
+
+```text
+diff-habits compare --repo ./demo --author "dev@example.com" --split 2026-04-13
+
+  before                                     after
+    added lines           22 (17 meaningful)   added lines           40 (26 meaningful)
+    error masking (hard)  1  (45.45 per 1k)    error masking (hard)  11 (275.0 per 1k)
+    error masking (soft)  0  (0.0 per 1k)      error masking (soft)  3  (75.0 per 1k)
+
+  deltas (after vs before)
+    masking hard /1k   45.45 -> 275.0   +505%
+    masking soft /1k     0.0 -> 75.0
+```
+
+Full `scan` and `compare` output, with the demo repo described, is in
+[`docs/example-output.md`](docs/example-output.md). The delta is the point; a single
+absolute number is not an audit, and the caveats below matter.
+
 ## What it measures
 
 Only **added** lines are examined. A deletion cannot introduce a swallowed error, and
