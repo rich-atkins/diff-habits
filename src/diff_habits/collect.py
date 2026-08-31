@@ -82,7 +82,12 @@ def collect(
             parts = line.split("\t")
             if len(parts) >= 4:
                 sha, email = parts[1], parts[2]
-                when = datetime.fromisoformat(parts[3])
+                # git's %aI emits a trailing Z for UTC; fromisoformat only
+                # accepts it from Python 3.11, and 3.10 is this package's floor.
+                stamp = parts[3].strip()
+                if stamp.endswith("Z"):
+                    stamp = stamp[:-1] + "+00:00"
+                when = datetime.fromisoformat(stamp)
             continue
         if line.startswith("+++ b/"):
             flush()

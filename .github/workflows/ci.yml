@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install git-habits
-        run: pip install git+https://github.com/uxdw/git-habits.git
+        run: pip install git+https://github.com/rich-atkins/git-habits.git
       - name: Install
         run: pip install -e ".[dev]"
       - name: Test
