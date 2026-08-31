@@ -7,7 +7,7 @@ An empty catch block, an `except: pass`, a `@ts-ignore`: each one removes the ev
 that something went wrong. This tells you whether you are adding more of them than you
 used to.
 
-Companion to [git-habits](https://github.com/uxdw/git-habits), which measures commit
+Companion to [git-habits](https://github.com/rich-atkins/git-habits), which measures commit
 and refactoring habits from metadata alone. `git-habits` never reads your source.
 `diff-habits` does, which is why it is a separate tool rather than a flag: you can run
 `git-habits` on an employer's repository without a conversation, and this one is a
@@ -18,7 +18,7 @@ Reads locally, emits only counts. Nothing is uploaded and there is no network ac
 ## Install
 
 ```bash
-git clone https://github.com/uxdw/diff-habits && cd diff-habits
+git clone https://github.com/rich-atkins/diff-habits && cd diff-habits
 python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 ```
 
