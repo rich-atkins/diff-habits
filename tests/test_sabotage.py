@@ -82,8 +82,13 @@ def test_control_repo_stays_quiet(tmp_path):
 
 
 def test_boundary_commit_counted_once(tmp_path):
-    """A commit exactly at the split instant lands in ONE window (v0.1 counted
-    it in both: git's --since and --until are both inclusive)."""
+    """A commit exactly at the split instant lands in ONE window, in `after`.
+
+    Measured behaviour (not the pre-fix guess): git's --until is inclusive but
+    --since is EXCLUSIVE, so v0.1 put boundary commits in before-only, and the
+    first fix attempt dropped them from BOTH windows. Both edges now anchor at
+    split-1s; this test pins all three behaviours (not lost, not doubled, same
+    side as git-habits)."""
     commits = [
         {"date": "2026-03-01T10:00:00",
          "files": {"src/a.py": clean_py_lines(60, "pre")}, "message": "pre"},
