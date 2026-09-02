@@ -2,6 +2,8 @@
 
 **Is your codebase quietly hiding its own failures?**
 
+![git-habits and diff-habits v0.2 demo: thin evidence refused with reasons, empty compare windows refused with exit 1, and the sabotage suites proving the detectors detect](docs/demo.gif)
+
 Counts error-masking constructs in your own diff history, and compares any two periods.
 An empty catch block, an `except: pass`, a `@ts-ignore`: each one removes the evidence
 that something went wrong. This tells you whether you are adding more of them than you
